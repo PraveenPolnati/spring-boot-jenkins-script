@@ -1,14 +1,11 @@
 pipeline {
     agent any
+
     stages {
-        stage('Checkout SCM') {
+        stage('Clone Repository') {
             steps {
-                checkout scm
-            }
-        }
-        stage('Build Application') {
-            steps {
-                sh 'mvn clean install'
+                // Clone the repository
+                git url: 'https://github.com/PraveenPolnati/welcome', branch: 'master'
             }
         }
     }
