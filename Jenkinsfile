@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Clone the repository
-                git url: 'https://github.com/PraveenPolnati/welcome', branch: 'master'
+                git url: 'https://github.com/PraveenPolnati/message', branch: 'master'
             }
         }
     }
