@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven-3.8.1'  // Maven installation in Jenkins (make sure Maven is installed on Jenkins)
-        jdk 'JDK-11'         // JDK installation in Jenkins (make sure JDK is installed on Jenkins)
-    }
+    // tools {
+    //     maven 'Maven-3.8.1'  // Maven installation in Jenkins (make sure Maven is installed on Jenkins)
+    //     jdk 'JDK-11'         // JDK installation in Jenkins (make sure JDK is installed on Jenkins)
+    // }
 
     environment {
         // Set the name of the project directory and JAR file
