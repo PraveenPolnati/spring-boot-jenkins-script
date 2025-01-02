@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define the directory where you want to clone your repository
-        REPO_DIR = 'workspace/spring-boot-app'
+        // REPO_DIR = 'workspace/spring-boot-app'
     }
 
     stages {
