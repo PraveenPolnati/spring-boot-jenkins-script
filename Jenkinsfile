@@ -6,25 +6,12 @@ pipeline {
                 checkout scm
             }
         }
-
         stage('Build Application') {
             steps {
-                script {
-                    // Ensure Maven is installed and available in your environment
-                    sh 'mvn clean install'  // Run Maven from the root where pom.xml is located
+                dir('path/to/your/subdirectory') {
+                    sh 'mvn clean install'
                 }
             }
-        }
-        
-        stage('Run Application Locally') {
-            steps {
-                echo 'Run Application Locally'  // Placeholder for local application startup
-            }
-        }
-    }
-    post {
-        always {
-            echo 'Build or application startup finished.'
         }
     }
 }
