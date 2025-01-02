@@ -10,9 +10,7 @@ pipeline {
         stage('Checkout SCM') {
             steps {
                 // Clone the repository into the specified directory
-                dir(REPO_DIR) {
                     git 'https://github.com/PraveenPolnati/message'
-                }
             }
         }
 
