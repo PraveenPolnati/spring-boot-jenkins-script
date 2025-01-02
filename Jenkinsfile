@@ -16,22 +16,22 @@ pipeline {
             }
         }
 
-        stage('Build Application') {
-            steps {
-                // Navigate to the cloned directory and run the Maven build
-                dir(REPO_DIR) {
-                    sh 'mvn clean install'
-                }
-            }
-        }
+        // stage('Build Application') {
+        //     steps {
+        //         // Navigate to the cloned directory and run the Maven build
+        //         dir(REPO_DIR) {
+        //             sh 'mvn clean install'
+        //         }
+        //     }
+        // }
 
-        stage('Run Spring Boot Application') {
-            steps {
-                // Run the Spring Boot application from the cloned directory
-                dir(REPO_DIR) {
-                    sh 'java -jar target/*.jar'
-                }
-            }
-        }
+        // stage('Run Spring Boot Application') {
+        //     steps {
+        //         // Run the Spring Boot application from the cloned directory
+        //         dir(REPO_DIR) {
+        //             sh 'java -jar target/*.jar'
+        //         }
+        //     }
+        // }
     }
 }
