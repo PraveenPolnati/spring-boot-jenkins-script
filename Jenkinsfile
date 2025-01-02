@@ -4,20 +4,21 @@ pipeline {
         stage('Checkout SCM') {
             steps {
                 // Cloning the repository from GitHub
-                git 'https://github.com/PraveenPolnati/message.git'
+                git url: 'https://github.com/PraveenPolnati/message.git' , branch: 'master'
             }
         }
-        stage('Build Application') {
-            steps {
-                // Assuming it's a Maven project, you can use the following to build the app
-                sh 'mvn clean install'
-            }
-        }
-        stage('Run Application') {
-            steps {
-                // If it's a Spring Boot application, you can run it like this:
-                sh 'java -jar target/message-0.0.1-SNAPSHOT.jar'
-            }
-        }
+        // stage('Build Application') {
+        //     steps {
+        //         // Assuming it's a Maven project, you can use the following to build the app
+        //         sh 'mvn clean install'
+        //     }
+        // }
+        // stage('Run Application') {
+        //     steps {
+        //         // If it's a Spring Boot application, you can run it like this:
+        //         sh 'java -jar target/message-0.0.1-SNAPSHOT.jar'
+        //     }
+        // }
     }
 }
+
