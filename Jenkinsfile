@@ -1,24 +1,37 @@
 pipeline {
     agent any
+
+    environment {
+        // Define the directory where you want to clone your repository
+        REPO_DIR = 'workspace/spring-boot-app'
+    }
+
     stages {
         stage('Checkout SCM') {
             steps {
-                // Cloning the repository from GitHub
-                git url: 'https://github.com/PraveenPolnati/message.git' , branch: 'master'
+                // Clone the repository into the specified directory
+                dir(REPO_DIR) {
+                    git 'https://github.com/PraveenPolnati/spring-boot-jenkins-script.git'
+                }
             }
         }
-        // stage('Build Application') {
-        //     steps {
-        //         // Assuming it's a Maven project, you can use the following to build the app
-        //         sh 'mvn clean install'
-        //     }
-        // }
-        // stage('Run Application') {
-        //     steps {
-        //         // If it's a Spring Boot application, you can run it like this:
-        //         sh 'java -jar target/message-0.0.1-SNAPSHOT.jar'
-        //     }
-        // }
+
+        stage('Build Application') {
+            steps {
+                // Navigate to the cloned directory and run the Maven build
+                dir(REPO_DIR) {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('Run Spring Boot Application') {
+            steps {
+                // Run the Spring Boot application from the cloned directory
+                dir(REPO_DIR) {
+                    sh 'java -jar target/*.jar'
+                }
+            }
+        }
     }
 }
-
