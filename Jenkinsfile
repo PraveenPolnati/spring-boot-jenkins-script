@@ -2,33 +2,39 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.8.1'  // Maven installation in Jenkins (make sure the name matches what you configured)
-        jdk 'JDK-11'         // JDK installation in Jenkins (make sure the name matches what you configured)
+        maven 'Maven-3.8.1'  // Ensure this matches the installed Maven tool in Jenkins
+        jdk 'JDK-11'         // Ensure this matches the installed JDK in Jenkins
     }
 
     environment {
-        JAR_NAME = 'greetings-0.0.1-SNAPSHOT.jar'  // Define your JAR name
+        JAR_NAME = 'welcome-0.0.1-SNAPSHOT.jar'  // The name of the JAR file (you can change this if needed)
     }
 
     stages {
-        stage('Clone Repository') {
+        stage('Checkout SCM') {
             steps {
-                // Clone the correct Git branch from the repository
-                git branch: 'master', url: 'https://github.com/PraveenPolnati/spring-boot-jenkins-script.git'
+                // Clone the repository from the new GitHub URL
+                git branch: 'master', url: 'https://github.com/PraveenPolnati/welcome.git'
             }
         }
 
         stage('Build Application') {
             steps {
-                // Build the project using Maven
-                sh 'mvn clean install'  // This will run from the root of the repository
+                // Navigate to the directory containing the pom.xml (if needed)
+                dir('welcome') {
+                    // Run the Maven build command
+                    sh 'mvn clean install'
+                }
             }
         }
 
         stage('Run Application Locally') {
             steps {
-                // Run the Spring Boot application locally using the JAR file
-                sh 'java -jar target/${JAR_NAME}'  // Ensure the JAR is being created in the target folder
+                // Navigate to the 'welcome' directory to run the application
+                dir('welcome') {
+                    // Run the Spring Boot application locally (from the target folder)
+                    sh 'java -jar target/${JAR_NAME}'
+                }
             }
         }
     }
