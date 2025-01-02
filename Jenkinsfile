@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // Clone the repository into the specified directory
                 dir(REPO_DIR) {
-                    git 'https://github.com/PraveenPolnati/spring-boot-jenkins-script.git'
+                    git 'https://github.com/PraveenPolnati/message'
                 }
             }
         }
